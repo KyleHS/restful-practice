@@ -9,10 +9,35 @@
 
 const express = require('express');
 const app = express();
+const path = require('path');
 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
+const comments = [
+{
+    username: 'Kevvy',
+    comment: 'stake stake stake!'
+},
+{
+    username: 'Knoely',
+    comment: 'aururururururuaaaaaaaaaaa'
+},
+{
+    username: 'Rinny',
+    comment: 'on a scale of 1-10 how was your day'
+},
+{
+    username: 'Mary',
+    comment: 'oh mylanta'
+},
+{
+    username: 'Evan',
+    comment: 'Sigh... animal'
+}
+]
 app.get('/tacos', (req, res) => {
     res.send("GET /tacos response")
 })
@@ -20,6 +45,10 @@ app.get('/tacos', (req, res) => {
 app.post('/tacos', (req, res) => {
     const { meat, qty } = req.body;
     res.send(`Here are your ${qty} ${meat} tacos`)
+})
+
+app.get('/comments', (req, res) => {
+    res.render('comments/index', { comments })
 })
 
 app.listen(3000, () => {
