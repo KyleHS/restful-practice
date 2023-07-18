@@ -51,6 +51,16 @@ app.get('/comments', (req, res) => {
     res.render('comments/index', { comments })
 })
 
+app.get('/comments/new', (req, res) => {
+    res.render('comments/new')
+})
+
+app.post('/comments', (req, res) => {
+    const { username, comment } = req.body;
+    comments.push({ username, comment })
+    res.send('it worked!')
+})
+
 app.listen(3000, () => {
     console.log("on port 3000")
 })
