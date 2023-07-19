@@ -20,6 +20,8 @@ app.use(methodOverride('_method'))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+
+//list of current comments in array
 const comments = [
 {
     id: uuid(),
@@ -103,7 +105,7 @@ app.patch('/comments/:id', (req, res) => {
 // *******************************************
 app.delete('/comments/:id', (req, res) => {
     const { id } = req.params;
-    comments = comments.filter(c => c.id !== id);
+    comments = comments.filter(c => c.id !== id);  //this makes a copy of array and makes change to it.  good practice not to mutate array.
     res.redirect('/comments');
 })
 
@@ -119,10 +121,3 @@ app.post('/tacos', (req, res) => {
 app.listen(3000, () => {
     console.log("ON PORT 3000!")
 })
-
-
-// GET /comments - list all comments
-// POST /comments - Create a new comment 
-// GET /comments/:id - Get one comment (using ID)
-// PATCH /comments/:id - Update one comment
-// DELETE /comments/:id - Destroy one comment
