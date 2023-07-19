@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>Edit</h1>
-    <form action="/comments/<%=comment.id%>/edit">
+    <!--way in which override method works-->
+    <form method="post" action="/comments/<%=comment.id%>?_method=PATCH "> 
         <textarea name="comment" id="" cols="30" rows="10">
             <%= comment.comment %>
         </textarea>
