@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showt</title>
+    <title>Show</title>
 </head>
 <!--Page made to show a specified comment-->
 <body>
     <h1>Comment ID: <%= comment.id %></h1>
     <h2><%= comment.comment %> - <%=comment.username%></h2>
     <a href="/comments">To Index</a>
+    <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
 </body>
 </html>
